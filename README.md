@@ -19,7 +19,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 
 sudo nano docker-compose.yml:
 
-"
+
 version: '3.7'
 services:
   wordpress:
@@ -34,5 +34,5 @@ services:
       WORDPRESS_DB_USER: adminWordPress
       WORDPRESS_DB_PASSWORD: xxxxxxxx
       WORDPRESS_DB_NAME: wordpressdatabase
-"
+
 ---------------------------------------------------------

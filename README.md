@@ -31,8 +31,7 @@
 ## Criação da Instância EC2:
 
 - Tipo -> t3.micro
-
-## Instalação do Docker via user_data.sh:
+- Instalação do Docker e configuração do EFS via user_data.sh:
 
 ```bash
 #cloud-config

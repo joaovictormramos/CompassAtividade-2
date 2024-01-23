@@ -79,6 +79,8 @@ services:
 ## Criação de uma AMI:
 - Instâncias -> (botão direito) Imagem e modelos -> Criar imagem
 - Nome: Criar Imagem
+
+## Criar Auto Scaling
 - Configuração do Auto Scaling:
 - Criar grupo do Auto Scaling
 - Criar modelo de execução: nome, inserir tags

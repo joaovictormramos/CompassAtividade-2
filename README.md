@@ -42,7 +42,22 @@ runcmd:
 - apt-get -y install amazon-efs-utils
 - yum install -y nfs-utils
 - apt-get -y install nfs-common
-- [Restante do script para montagem do EFS e instalação do Docker]
+- file_system_id_1=fs-06fcb65afe79b862d
+- efs_mount_point_1=/mnt/efs/fs1
+- mkdir -p "${efs_mount_point_1}"
+- test -f "/sbin/mount.efs" && printf "\n${file_system_id_1}:/ ${efs_mount_point_1} efs tls,_netdev\n" >> /etc/fstab || printf "\n${file_system_id_1}.efs.us-east-1.amazonaws.com:/ ${efs_mount_point_1} nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport,_netdev 0 0\n" >> /etc/fstab
+- test -f "/sbin/mount.efs" && grep -ozP 'client-info]\nsource' '/etc/amazon/efs/efs-utils.conf'; if [[ $? == 1 ]]; then printf "\n[client-info]\nsource=liw\n" >> /etc/amazon/efs/efs-utils.conf; fi;
+- retryCnt=15; waitTime=30; while true; do mount -a -t efs,nfs4 defaults; if [ $? = 0 ] || [ $retryCnt -lt 1 ]; then echo File system mounted successfully; break; fi; echo File system not available, retrying to mount.; ((retryCnt--)); sleep $waitTime; done;
+
+#!/bin/bash
+yum update -y
+yum install -y docker
+service docker start
+usermod -a -G docker ec2-user
+systemctl enable docker
+
+curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
 
 ## Criação do Load Balancer:
 - Nome do Load Balancer

@@ -6,8 +6,10 @@
 - GATEWAYS NAT (USD) - 1 por AZ
 
 ## Criação de Security Groups:
-
-[Inserir informações sobre a configuração dos grupos de segurança]
+- Para as intâncias
+- Para o EFS
+- Para ELB
+- Para RDS
 
 ## Criação do EFS:
 
@@ -75,7 +77,7 @@ services:
       WORDPRESS_DB_PASSWORD: ************
       WORDPRESS_DB_NAME: wordpress_database
 "
-
+#
 ## Criação de uma AMI:
 - Instâncias -> (botão direito) Imagem e modelos -> Criar imagem
 - Nome: Criar Imagem

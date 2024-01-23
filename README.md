@@ -1,3 +1,4 @@
+
 # Configuração de Infraestrutura AWS
 
 ## Criação da VPC:
@@ -58,7 +59,7 @@ systemctl enable docker
 
 curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
-
+```
 ## Criação do Load Balancer:
 - Nome do Load Balancer
 - Esquema -> voltado para a internet
@@ -74,9 +75,12 @@ chmod +x /usr/local/bin/docker-compose
 - VPC -> criada anteriormente
 - Registrar destinos -> selecione a instância criada
 - Criar grupo de destino
-- Criação do arquivo docker-compose.yml:
 
-"
+##  Criar o arquivo docker-compose na pasta EFS
+- Criação do arquivo docker-compose.yml:
+- sudo nano docker-compose.yml
+
+```
 version: '3.1'
 services:
   wordpress:
@@ -91,8 +95,8 @@ services:
       WORDPRESS_DB_USER: admin
       WORDPRESS_DB_PASSWORD: ************
       WORDPRESS_DB_NAME: wordpress_database
-"
-#
+```
+
 ## Criação de uma AMI:
 - Instâncias -> (botão direito) Imagem e modelos -> Criar imagem
 - Nome: Criar Imagem

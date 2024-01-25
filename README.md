@@ -24,7 +24,7 @@
 - Nome do usuário principal (*guardar este user*)
 - Senha principal (*memorizar a senha pois será usada posteriormente*)
 - Em conectividade -> selecione a VPC criada
-- Acesso ao público: SIM
+- Acesso ao público: NÃO
 - Grupos de segurança da VPC: selecione o grupo criado para o RDS
 - Em configuração adicional -> dê um nome para o banco de dados (*memorize*)
 
